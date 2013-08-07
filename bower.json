@@ -1,12 +1,10 @@
 {
-  "name": "Bokeh.js",
+  "name": "Best Practices",
   "version": "1.0.0",
   "dependencies": {
     "jquery": null,
     "backbone-amd": null,
     "underscore-amd": null,
-    "requirejs": null,
-    "require-cs": null,
-    "coffee-script": null
+    "requirejs": null
   }
 }
