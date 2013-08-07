@@ -2,9 +2,9 @@ module.exports = (grunt) ->
   grunt.initConfig
     coffee:
       compile:
-        expand: true
-        cwd: "src"
-        src: "**/*.coffee" #
+        expand: true # builds files dynamically
+        cwd: "src" # source dir for coffee files
+        src: "**/*.coffee" # traverse all *.coffee files
         dest: "build" # destination for compiled js files
         ext: ".js" # file extension
 
