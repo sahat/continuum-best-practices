@@ -2,7 +2,7 @@
 
 We use [Grunt](http://gruntjs.com/getting-started) for building, watching, minification, concatenation of source files and [Bower](http://bower.io/) for installing front-end libraries.
 
-### Setup
+#### Setup
 
 Once you have installed `grunt-cli` and `bower`, run the following commands in terminal:
 
@@ -10,7 +10,7 @@ Once you have installed `grunt-cli` and `bower`, run the following commands in t
 npm install && bower install
 ```
 
-### Usage
+#### Usage
 
 If you only want to build source files once:
 ```bash
@@ -27,3 +27,8 @@ And to build optimized, concatenated source files for production:
 grunt build deploy
 ```
 
+### Directory Structure
+
+* */app*: Develop and edit files in this diectory
+* */dev*: Set this directory as your static path for development
+* */dist*: Set this directory as your static path for production

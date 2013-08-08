@@ -4,6 +4,6 @@ require.config
     underscore: "vendor/underscore-amd/underscore"
     backbone: "vendor/backbone-amd/backbone"
 
-require ["views/app"], (AppView) ->
+require ["views/starbucks"], (AppView) ->
   new AppView
 
