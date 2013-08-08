@@ -1,10 +1,13 @@
-{ "name": "Bokeh.js",
+{
+  "name": "Bokeh.js",
   "version": "1.0.0",
   "dependencies": {
     "requirejs": "~2.1",
     "bower": "~1.1",
     "grunt": "~0.4",
     "grunt-contrib-coffee": "*",
-    "grunt-contrib-watch": "*"
+    "grunt-contrib-watch": "*",
+    "grunt-less": "~0.1.7",
+    "grunt-contrib-less": "~0.6.4"
   }
 }
