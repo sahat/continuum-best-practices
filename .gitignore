@@ -20,4 +20,6 @@ build
 .idea
 npm-debug.log
 libs
-dev/
+dev
+build
+release

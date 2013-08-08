@@ -2,58 +2,66 @@ module.exports = (grunt) ->
   grunt.initConfig
   
     copy:
-      main:
-        files:[
-          { expand: true,  cwd: 'app/scripts',  src: ['**/*.js'], dest: 'dev', filter: 'isFile'}, # includes files in path
-          { expand: true,  cwd: 'app/css',  src: ['**/*.css'], dest: 'dev', filter: 'isFile'}, # includes files in path
-          ]
+      html:
+        files: [
+          expand: true
+          cwd: 'src'
+          src: ['**/*.html']  # copy index.html from src to dist
+          dest: 'build'
+          filter: 'isFile'
+        ]
+      requirejs:
+        files: [
+          expand: true
+          cwd: 'build/js/vendor/requirejs'
+          src: ['require.js']
+          dest: 'build/js'
+          filter: 'isFile'
+        ]
+
+    clean: ['release/js/vendor', 'release/js/views', 'release/build.txt']
 
     less:
       development:
         options:
           concat: false
         files: [{
-          expand: true,        # Enable dynamic expansion.
-          concat: false
-          cwd: 'app/less',  # Src matches are relative to this path.
-          src: ['*.less'],     # Actual pattern(s) to match.
-          dest: 'dev/css',  # Destination path prefix.
-          ext: '.css',         # Dest filepaths will have this extension.
+          expand: true,        # enable dynamic expansion
+          concat: false        # do not concatenate
+          cwd: 'src/less',     # src matches are relative to this path
+          src: ['*.less'],     # actual pattern(s) to match
+          dest: 'build/css',   # destination path prefix
+          ext: '.css',         # dest filepaths will have this extension
         }]
         
     coffee:
       compile:
-        expand: true # enable dynamic expansion
-        cwd: "src/coffee" # source dir for coffee files
-        src: "**/*.coffee" # traverse *.coffee files relative to cwd
-        dest: "build/js" # destination for compiled js files
-        ext: ".js" # file extension
+        expand: true           # enable dynamic expansion
+        cwd: 'src/coffee'      # source dir for coffee files
+        src: '**/*.coffee'     # traverse *.coffee files relative to cwd
+        dest: 'build/js'       # destination for compiled js files
+        ext: '.js'             # file extension for compiled files
             
     requirejs:
       compile:
         options:
-          appDir: "dev"
+          appDir: 'build'
           name: "main"
-          baseUrl: "scripts"
-          dir: "dist"
-          mainConfigFile: "dev/scripts/main.js"
+          baseUrl: "js"
+          dir: "release"
+          mainConfigFile: "build/js/main.js"
           optimizeCss: 'standard'
-          fileExclusionRegExp: /^tests$/
-    
+          fileExclusionRegExp: /^test$/
+
     watch:
       scripts:
-        files: ['app/scripts/**/*.coffee']
+        files: ['src/coffee/**/*.coffee']
         tasks: ['coffee']
         options:
           spawn: false
       styles:
-        files: ['app/less/**/*.less']
+        files: ['src/less/**/*.less']
         tasks: ['less']
-        options:
-          spawn: false
-      files:
-        files: ['app/css/**/*.css', 'app/scripts/**/*.js', ]
-        tasks: ['copy']
         options:
           spawn: false
 
@@ -62,10 +70,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-less"
   grunt.loadNpmTasks "grunt-contrib-requirejs"
   grunt.loadNpmTasks "grunt-contrib-copy"
+  grunt.loadNpmTasks "grunt-contrib-clean"
 
   grunt.registerTask "default", ["coffee", "less", "copy"]
   grunt.registerTask "build", ["coffee", "less", "copy"]
-  grunt.registerTask "deploy", ["build", "requirejs"]
+  grunt.registerTask "deploy", ["build", "requirejs", "clean"]
   
   
   
