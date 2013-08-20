@@ -26,9 +26,3 @@ And to build optimized, concatenated source files for production:
 ```bash
 grunt build deploy
 ```
-
-### Directory Structure
-
-* */app*: Develop and edit files in this diectory
-* */dev*: Set this directory as your static path for development
-* */dist*: Set this directory as your static path for production
