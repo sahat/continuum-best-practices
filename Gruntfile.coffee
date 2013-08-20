@@ -46,11 +46,13 @@ module.exports = (grunt) ->
       compile:
         options:
           appDir: 'build'
-          name: "main"
-          baseUrl: "js"
-          dir: "release"
-          mainConfigFile: "build/js/main.js"
-          optimizeCss: 'standard'
+          name: 'main'
+          paths:
+            requireLib: 'vendor/requirejs/require'
+          include: ["requireLib"]
+          baseUrl: 'js'
+          dir: 'release'
+          mainConfigFile: 'build/js/main.js'
           fileExclusionRegExp: /^test$/
 
     watch:
